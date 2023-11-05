@@ -12,8 +12,7 @@ from langchain.embeddings import GooglePalmEmbeddings
 from langchain.vectorstores import FAISS
 
 
-#llm = GooglePalm(google_api_key=st.secrets["api_key"], temperature=0.5, max_tokens=300)
-llm = GooglePalm(google_api_key='AIzaSyArkr6eudDUuFwlCH-oK1SHPoAwUaKmB1Y', temperature=0.5, max_tokens=300)
+llm = GooglePalm(google_api_key=st.secrets["api_key"], temperature=0.5, max_tokens=300)
 
 st.title('QA Chatbot')
 st.image('cover.jpg')
@@ -22,7 +21,7 @@ st.subheader('Please enter your question here about our courses:.')
 with st.spinner('Loading, please wait...'):
   loader = CSVLoader(file_path='QA.csv', source_column= 'prompt',encoding='cp1252')
   data = loader.load()
-  embeddings = GooglePalmEmbeddings(google_api_key='AIzaSyArkr6eudDUuFwlCH-oK1SHPoAwUaKmB1Y')
+  embeddings = GooglePalmEmbeddings(google_api_key=st.secrets["api_key"])
   vectorindex_googlepalm = FAISS.from_documents(data, embeddings)
   retriever = vectorindex_googlepalm.as_retriever()
   vectorindex_googlepalm.save_local('vectordatabase')
