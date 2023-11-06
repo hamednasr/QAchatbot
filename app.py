@@ -39,5 +39,5 @@ if question:
 
     answer = chain(question)
 
-    st.header('BOT: ')
-    st.write(answer['result'])
+    st.header('Assistant:')
+    st.write(#### answer['result'])
