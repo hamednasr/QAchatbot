@@ -3,17 +3,15 @@ import langchain
 import time
 from langchain.llms import GooglePalm
 from langchain.chains import RetrievalQA
-from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.chains.qa_with_sources.loading import load_qa_with_sources_chain
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders.csv_loader import CSVLoader
-from langchain.document_loaders import UnstructuredURLLoader
 from langchain.embeddings import GooglePalmEmbeddings
 from langchain.vectorstores import FAISS
 
 
 llm = GooglePalm(google_api_key=st.secrets["api_key"], temperature=0.5, max_tokens=300)
 
+st.write(':red[If this page returns an error, it is probably because the Google generative ai API key is unavailable where the app is running.]')
 st.title('QA Chatbot')
 st.image('cover.jpg')
 st.subheader('Please enter your question here about our courses:.')
