@@ -40,4 +40,4 @@ if question:
     answer = chain(question)
 
     st.header('Assistant:')
-    st.write(#### answer['result'])
+    st.subheader(answer['result'])
